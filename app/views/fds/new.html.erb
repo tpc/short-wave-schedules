@@ -1,0 +1,23 @@
+<h1>New fd</h1>
+
+<% form_for(@fd) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :utc_begin %><br />
+    <%= select_hour(0, :prefix => 'fd[utc_begin]', :discard_type => true) %>
+  </p>
+  <p>
+    <%= f.label :utc_end %><br />
+    <%= select_hour(nil, :prefix => 'fd[utc_end]', :include_blank => true, :discard_type => true) %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', fds_path %>

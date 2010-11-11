@@ -1,0 +1,26 @@
+<h1>New rt</h1>
+
+<% form_for(@rt) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :utc_offset_column_name %><br />
+    <%= f.text_field :utc_offset_column_name %>
+  </p>
+  <p>
+    <%= f.label :utc_offset %><br />
+    <%= f.text_field :utc_offset %>
+  </p>
+  <p><b>Frequency Directives</b><br />
+    <%= f.collection_select(:fd_ids, Fd.find(:all, :order => "utc_begin"), :id, :hr, {}, {:name => 'rt[fd_ids][]', :multiple => true}) %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', rts_path %>

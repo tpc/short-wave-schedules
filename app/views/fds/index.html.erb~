@@ -1,0 +1,24 @@
+<h1>Listing fds</h1>
+
+<table>
+  <tr>
+    <th>Utc begin</th>
+    <th>Utc end</th>
+    <th>Body</th>
+  </tr>
+
+<% for fd in @fds %>
+  <tr>
+    <td><%=h fd.utc_begin %></td>
+    <td><%=h fd.utc_end %></td>
+    <td><%=h fd.body %></td>
+    <td><%= link_to 'Show', fd %></td>
+    <td><%= link_to 'Edit', edit_fd_path(fd) %></td>
+    <td><%= link_to 'Destroy', fd, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New fd', new_fd_path %>

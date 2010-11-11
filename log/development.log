@@ -1,0 +1,1746 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE DATABASE `sws_dev` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (91.7ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (80.1ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateSchedules (20090603211731)
+  [4;35;1mSQL (76.4ms)[0m   [0mCREATE TABLE `schedules` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `year_season` varchar(255), `language` varchar(255), `posting_date` date, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090603211731')[0m
+Migrating to CreateRts (20090603211745)
+  [4;35;1mSQL (65.7ms)[0m   [0mCREATE TABLE `rts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `utc_offset_column_name` varchar(255), `utc_offset` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090603211745')[0m
+Migrating to CreateFds (20090603211754)
+  [4;35;1mSQL (73.0ms)[0m   [0mCREATE TABLE `fds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `utc_begin` time, `utc_end` time, `body` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090603211754')[0m
+Migrating to CreateFdRtJoin (20090603211817)
+  [4;35;1mSQL (83.3ms)[0m   [0mCREATE TABLE `fds_rts` (`fd_id` int(11), `rt_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090603211817')[0m
+Migrating to CreateRtScheduleJoin (20090603211825)
+  [4;35;1mSQL (58.2ms)[0m   [0mCREATE TABLE `rts_schedules` (`rt_id` int(11), `schedule_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.8ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090603211825')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mdescribe `fds`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `fds`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `fds_rts`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `fds_rts`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `rts`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `rts`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `rts_schedules`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `rts_schedules`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `schedules`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `schedules`[0m
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:18:48) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:19:05) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/fds/new" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:19:31) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/fds" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:20:08) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/fds" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:20:18) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/fds/new" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:20:28) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:22:19) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:22:30) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 134.154.221.43 at 2009-06-03 16:26:32) [GET]
+
+
+ActionController::RoutingError (No route matches "/sws/" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 16:28:21) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.rts) on line #1 of app/views/sws_static/_get_swsched.html.erb:
+1:   <% @schedule.rts.each do |rt| %>
+2:           <p>
+3:              <table cellpadding='2' cellspacing='1' border='1'><%= rt.name %>
+4: 		<tr>
+
+    app/views/sws_static/_get_swsched.html.erb:1
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:20:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:19:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/partials.rb:152:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:258:in `render'
+    app/views/sws_static/index.html.erb:2
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:896:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:868:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1248:in `default_render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (117.0ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (2.8ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing FdsController#new (for 134.154.221.43 at 2009-06-03 16:29:02) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+Rendering template within layouts/fds
+Rendering fds/new
+Completed in 57ms (View: 32, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/new]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:44:54) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 5950 49\r\n 6985 41\r\n 9505 31\r\n15440 19", "utc_end"=>"", "utc_begin"=>"00"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:44:54', 10000, ' 5950 49\r\n 6985 41\r\n 9505 31\r\n15440 19', '2009-06-03 23:44:54', '2000-01-01 00:00:00')[0m
+  [4;35;1mSQL (59.3ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb7362c54>
+Completed in 107ms (DB: 63) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:44:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 1) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 50ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/1]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:45:33) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 6985 41\r\n 9505 31\r\n15440 19", "utc_end"=>"", "utc_begin"=>"01"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:45:33', 20000, ' 6985 41\r\n 9505 31\r\n15440 19', '2009-06-03 23:45:33', '2000-01-01 01:00:00')[0m
+  [4;35;1mSQL (58.8ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73e9074>
+Completed in 105ms (DB: 63) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:45:39) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 2) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/2]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:45:54) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 6985 41\r\n 9505 31\r\n 9680 31\r\n15440 19", "utc_end"=>"", "utc_begin"=>"02"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:45:54', 30000, ' 6985 41\r\n 9505 31\r\n 9680 31\r\n15440 19', '2009-06-03 23:45:54', '2000-01-01 02:00:00')[0m
+  [4;35;1mSQL (51.4ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb742d044>
+Completed in 97ms (DB: 55) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:45:59) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 3) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/3]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:46:20) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 6915 41\r\n 6985 41\r\n 9505 31", "utc_end"=>"", "utc_begin"=>"03"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:46:21', 40000, ' 6915 41\r\n 6985 41\r\n 9505 31', '2009-06-03 23:46:21', '2000-01-01 03:00:00')[0m
+  [4;35;1mSQL (51.0ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73bd08c>
+Completed in 99ms (DB: 55) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:46:26) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 4) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/4]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:46:44) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 5950 49\r\n 6915 41\r\n 9680 31", "utc_end"=>"", "utc_begin"=>"04"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:46:44', 50000, ' 5950 49\r\n 6915 41\r\n 9680 31', '2009-06-03 23:46:44', '2000-01-01 04:00:00')[0m
+  [4;35;1mSQL (61.1ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb7397b70>
+Completed in 107ms (DB: 65) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:46:50) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 5) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/5]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:47:17) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 7730 41\r\n 9550 31\r\n 9625 31", "utc_end"=>"", "utc_begin"=>"11"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:47:17', 120000, ' 7730 41\r\n 9550 31\r\n 9625 31', '2009-06-03 23:47:17', '2000-01-01 11:00:00')[0m
+  [4;35;1mSQL (43.2ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb7347184>
+Completed in 89ms (DB: 47) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:47:22) [GET]
+  Parameters: {"id"=>"6"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 6) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/6]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:47:42) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"17555 16", "utc_end"=>"", "utc_begin"=>"12"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:47:42', 130000, '17555 16', '2009-06-03 23:47:42', '2000-01-01 12:00:00')[0m
+  [4;35;1mSQL (48.1ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb739d188>
+Completed in 94ms (DB: 52) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:47:48) [GET]
+  Parameters: {"id"=>"7"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 7) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/7]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:48:03) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"15770 19", "utc_end"=>"", "utc_begin"=>"13"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:48:03', 140000, '15770 19', '2009-06-03 23:48:03', '2000-01-01 13:00:00')[0m
+  [4;35;1mSQL (46.0ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb738d3dc>
+Completed in 94ms (DB: 50) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:48:08) [GET]
+  Parameters: {"id"=>"8"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 8) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 50ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/8]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:48:22) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 6085 49", "utc_end"=>"", "utc_begin"=>"14"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:48:22', 150000, ' 6085 49', '2009-06-03 23:48:22', '2000-01-01 14:00:00')[0m
+  [4;35;1mSQL (63.0ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73d13ac>
+Completed in 109ms (DB: 67) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:48:27) [GET]
+  Parameters: {"id"=>"9"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 9) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/9]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:50:00) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"11530 25\r\n11580 25", "utc_end"=>"", "utc_begin"=>"17"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:50:00', 180000, '11530 25\r\n11580 25', '2009-06-03 23:50:00', '2000-01-01 17:00:00')[0m
+  [4;35;1mSQL (60.3ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb743c328>
+Completed in 106ms (DB: 64) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:50:06) [GET]
+  Parameters: {"id"=>"10"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 10) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/10]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:50:23) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 9355 31\r\n 9340 31", "utc_end"=>"", "utc_begin"=>"18"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:50:23', 190000, ' 9355 31\r\n 9340 31', '2009-06-03 23:50:23', '2000-01-01 18:00:00')[0m
+  [4;35;1mSQL (52.0ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73bd1f4>
+Completed in 98ms (DB: 56) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:50:28) [GET]
+  Parameters: {"id"=>"11"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 11) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/11]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:50:45) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"11530 25", "utc_end"=>"", "utc_begin"=>"19"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:50:45', 200000, '11530 25', '2009-06-03 23:50:45', '2000-01-01 19:00:00')[0m
+  [4;35;1mSQL (55.6ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73683ac>
+Completed in 102ms (DB: 59) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:50:51) [GET]
+  Parameters: {"id"=>"12"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 12) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/12]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:51:07) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"17885 16", "utc_end"=>"", "utc_begin"=>"20"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:51:07', 210000, '17885 16', '2009-06-03 23:51:07', '2000-01-01 20:00:00')[0m
+  [4;35;1mSQL (54.2ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb743a3ac>
+Completed in 101ms (DB: 58) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:51:13) [GET]
+  Parameters: {"id"=>"13"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 13) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/13]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 16:51:37) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"18930 15\r\n21525 13 ", "utc_end"=>"", "utc_begin"=>"21"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-03 23:51:37', 220000, '18930 15\r\n21525 13 ', '2009-06-03 23:51:37', '2000-01-01 21:00:00')[0m
+  [4;35;1mSQL (49.7ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73ef1f4>
+Completed in 95ms (DB: 53) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 16:51:43) [GET]
+  Parameters: {"id"=>"14"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 14) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 50ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/14]
+
+
+Processing RtsController#new (for 134.154.221.43 at 2009-06-03 16:52:21) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+Rendering template within layouts/rts
+Rendering rts/new
+  [4;35;1mFd Load (1.6ms)[0m   [0mSELECT * FROM `fds` ORDER BY utc_begin[0m
+  [4;36;1mFd Load (0.9ms)[0m   [0;1mSELECT `fds`.id FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = NULL ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+Completed in 92ms (View: 58, DB: 7) | 200 OK [http://fsiinfo.familyradio.org/sws/rts/new]
+
+
+Processing RtsController#create (for 134.154.221.43 at 2009-06-03 16:53:40) [POST]
+  Parameters: {"commit"=>"Create", "rt"=>{"name"=>"English to Canada & Mexico", "fd_ids"=>["1", "2", "3", "4", "5"], "utc_offset"=>"-5", "utc_offset_column_name"=>"Eastern Standard"}, "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mFd Load (1.2ms)[0m   [0;1mSELECT * FROM `fds` WHERE (`fds`.`id` IN (1,2,3,4,5)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mRt Create (0.7ms)[0m   [0;1mINSERT INTO `rts` (`name`, `created_at`, `updated_at`, `utc_offset_column_name`, `utc_offset`) VALUES('English to Canada & Mexico', '2009-06-03 23:53:40', '2009-06-03 23:53:40', 'Eastern Standard', '-5')[0m
+  [4;35;1mfds_rts Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (1, 1)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (1, 2)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (1, 3)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (1, 4)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (1, 5)[0m
+  [4;35;1mSQL (52.4ms)[0m   [0mCOMMIT[0m
+Redirected to #<Rt:0xb73a674c>
+Completed in 151ms (DB: 71) | 302 Found [http://fsiinfo.familyradio.org/sws/rts]
+
+
+Processing RtsController#show (for 134.154.221.43 at 2009-06-03 16:53:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mRt Load (0.9ms)[0m   [0mSELECT * FROM `rts` WHERE (`rts`.`id` = 1) [0m
+Rendering template within layouts/rts
+Rendering rts/show
+Completed in 51ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/rts/1]
+
+
+Processing RtsController#create (for 134.154.221.43 at 2009-06-03 16:55:14) [POST]
+  Parameters: {"commit"=>"Create", "rt"=>{"name"=>"English to Central & South America", "fd_ids"=>["6", "7", "8", "9"], "utc_offset"=>"-3", "utc_offset_column_name"=>"Local"}, "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mFd Load (1.2ms)[0m   [0;1mSELECT * FROM `fds` WHERE (`fds`.`id` IN (6,7,8,9)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mRt Create (0.7ms)[0m   [0;1mINSERT INTO `rts` (`name`, `created_at`, `updated_at`, `utc_offset_column_name`, `utc_offset`) VALUES('English to Central & South America', '2009-06-03 23:55:14', '2009-06-03 23:55:14', 'Local', '-3')[0m
+  [4;35;1mfds_rts Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (2, 6)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (2, 7)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (2, 8)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (2, 9)[0m
+  [4;35;1mSQL (51.1ms)[0m   [0mCOMMIT[0m
+Redirected to #<Rt:0xb741b948>
+Completed in 144ms (DB: 68) | 302 Found [http://fsiinfo.familyradio.org/sws/rts]
+
+
+Processing RtsController#show (for 134.154.221.43 at 2009-06-03 16:55:20) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mRt Load (0.9ms)[0m   [0mSELECT * FROM `rts` WHERE (`rts`.`id` = 2) [0m
+Rendering template within layouts/rts
+Rendering rts/show
+Completed in 52ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/rts/2]
+
+
+Processing RtsController#create (for 134.154.221.43 at 2009-06-03 16:58:29) [POST]
+  Parameters: {"commit"=>"Create", "rt"=>{"name"=>"Francais Vers L' Europe Et L' Afrique", "fd_ids"=>["10", "11", "12", "13", "14"], "utc_offset"=>"", "utc_offset_column_name"=>""}, "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mFd Load (1.2ms)[0m   [0;1mSELECT * FROM `fds` WHERE (`fds`.`id` IN (10,11,12,13,14)) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mRt Create (0.7ms)[0m   [0;1mINSERT INTO `rts` (`name`, `created_at`, `updated_at`, `utc_offset_column_name`, `utc_offset`) VALUES('Francais Vers L\' Europe Et L\' Afrique', '2009-06-03 23:58:29', '2009-06-03 23:58:29', '', '')[0m
+  [4;35;1mfds_rts Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (3, 10)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (3, 11)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (3, 12)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (3, 13)[0m
+  [4;35;1mfds_rts Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO `fds_rts` (`rt_id`, `fd_id`) VALUES (3, 14)[0m
+  [4;35;1mSQL (56.0ms)[0m   [0mCOMMIT[0m
+Redirected to #<Rt:0xb74275b8>
+Completed in 155ms (DB: 75) | 302 Found [http://fsiinfo.familyradio.org/sws/rts]
+
+
+Processing RtsController#show (for 134.154.221.43 at 2009-06-03 16:58:34) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mRt Load (0.9ms)[0m   [0mSELECT * FROM `rts` WHERE (`rts`.`id` = 3) [0m
+Rendering template within layouts/rts
+Rendering rts/show
+Completed in 52ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/rts/3]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 17:00:09) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>"11855 25", "utc_end"=>"", "utc_begin"=>"06"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-04 00:00:09', 70000, '11855 25', '2009-06-04 00:00:09', '2000-01-01 06:00:00')[0m
+  [4;35;1mSQL (45.5ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73d13ac>
+Completed in 92ms (DB: 49) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 17:00:14) [GET]
+  Parameters: {"id"=>"15"}
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 15) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/15]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 17:00:32) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 9955 31", "utc_end"=>"", "utc_begin"=>"07"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-04 00:00:33', 80000, ' 9955 31', '2009-06-04 00:00:33', '2000-01-01 07:00:00')[0m
+  [4;35;1mSQL (50.9ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb73793dc>
+Completed in 98ms (DB: 55) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 17:00:38) [GET]
+  Parameters: {"id"=>"16"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.9ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.8ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 16) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 50ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/16]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 17:00:53) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 9955 31\r\n18930 15", "utc_end"=>"", "utc_begin"=>"08"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+ArgumentError (invalid value for Integer: "08"):
+    /app/controllers/fds_controller.rb:44:in `Integer'
+    /app/controllers/fds_controller.rb:44:in `create'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (61.5ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (3.3ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 17:03:13) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 9955 31\r\n18930 15", "utc_end"=>"", "utc_begin"=>"08"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+ArgumentError (invalid value for Integer: "08"):
+    /app/controllers/fds_controller.rb:44:in `Integer'
+    /app/controllers/fds_controller.rb:44:in `create'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1253:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (62.1ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (3.3ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 17:23:31) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 9955 31\r\n18930 15", "utc_end"=>"", "utc_begin"=>"08"}}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.8ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-04 00:23:32', 90000, ' 9955 31\r\n18930 15', '2009-06-04 00:23:32', '2000-01-01 08:00:00')[0m
+  [4;35;1mSQL (59.9ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb743526c>
+Completed in 106ms (DB: 64) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 17:23:37) [GET]
+  Parameters: {"id"=>"17"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 17) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 49ms (View: 21, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/17]
+
+
+Processing FdsController#create (for 134.154.221.43 at 2009-06-03 17:28:44) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b", "fd"=>{"body"=>" 9565 31\r\n18930 15", "utc_end"=>"", "utc_begin"=>"09"}}
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mFd Create (0.7ms)[0m   [0;1mINSERT INTO `fds` (`created_at`, `utc_end`, `body`, `updated_at`, `utc_begin`) VALUES('2009-06-04 00:28:44', 100000, ' 9565 31\r\n18930 15', '2009-06-04 00:28:44', '2000-01-01 09:00:00')[0m
+  [4;35;1mSQL (51.4ms)[0m   [0mCOMMIT[0m
+Redirected to #<Fd:0xb7373400>
+Completed in 97ms (DB: 55) | 302 Found [http://fsiinfo.familyradio.org/sws/fds]
+
+
+Processing FdsController#show (for 134.154.221.43 at 2009-06-03 17:28:49) [GET]
+  Parameters: {"id"=>"18"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mFd Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mFd Load (0.9ms)[0m   [0mSELECT * FROM `fds` WHERE (`fds`.`id` = 18) [0m
+Rendering template within layouts/fds
+Rendering fds/show
+Completed in 50ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/fds/18]
+
+
+Processing RtsController#new (for 134.154.221.43 at 2009-06-03 17:29:06) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mRt Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+Rendering template within layouts/rts
+Rendering rts/new
+  [4;35;1mFd Load (1.7ms)[0m   [0mSELECT * FROM `fds` ORDER BY utc_begin[0m
+  [4;36;1mFd Load (1.0ms)[0m   [0;1mSELECT `fds`.id FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = NULL ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+Completed in 92ms (View: 59, DB: 8) | 200 OK [http://fsiinfo.familyradio.org/sws/rts/new]
+
+
+Processing SchedulesController#new (for 134.154.221.43 at 2009-06-03 17:29:42) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+Rendering template within layouts/schedules
+Rendering schedules/new
+  [4;35;1mRt Load (0.9ms)[0m   [0mSELECT * FROM `rts` ORDER BY created_at[0m
+  [4;36;1mRt Load (0.9ms)[0m   [0;1mSELECT `rts`.id FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = NULL ) [0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+Completed in 202ms (View: 173, DB: 7) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/new]
+
+
+Processing SchedulesController#create (for 134.154.221.43 at 2009-06-03 17:30:35) [POST]
+  Parameters: {"commit"=>"Create", "schedule"=>{"posting_date(1i)"=>"2009", "posting_date(2i)"=>"6", "posting_date(3i)"=>"4", "language"=>"english", "rt_ids"=>["1", "2"], "year_season"=>"Summer 2009"}, "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+  [4;36;1mRt Load (1.0ms)[0m   [0;1mSELECT * FROM `rts` WHERE (`rts`.`id` IN (1,2)) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSchedule Create (0.8ms)[0m   [0;1mINSERT INTO `schedules` (`created_at`, `updated_at`, `language`, `posting_date`, `year_season`) VALUES('2009-06-04 00:30:35', '2009-06-04 00:30:35', 'english', '2009-06-04', 'Summer 2009')[0m
+  [4;35;1mrts_schedules Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `rts_schedules` (`schedule_id`, `rt_id`) VALUES (1, 1)[0m
+  [4;35;1mrts_schedules Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `rts_schedules` (`schedule_id`, `rt_id`) VALUES (1, 2)[0m
+  [4;35;1mSQL (60.5ms)[0m   [0mCOMMIT[0m
+Redirected to #<Schedule:0xb7368d20>
+Completed in 148ms (DB: 73) | 302 Found [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#show (for 134.154.221.43 at 2009-06-03 17:30:41) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+Rendering template within layouts/schedules
+Rendering schedules/show
+Completed in 49ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/1]
+
+
+Processing SchedulesController#create (for 134.154.221.43 at 2009-06-03 17:31:11) [POST]
+  Parameters: {"commit"=>"Create", "schedule"=>{"posting_date(1i)"=>"2009", "posting_date(2i)"=>"6", "posting_date(3i)"=>"4", "language"=>"french", "rt_ids"=>["3"], "year_season"=>"Summer 2009"}, "authenticity_token"=>"50ad5743d1f80ddf40370143015b1df6174d1e7b"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mRt Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+  [4;36;1mRt Load (0.3ms)[0m   [0;1mSELECT * FROM `rts` WHERE (`rts`.`id` = 3) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSchedule Create (0.7ms)[0m   [0;1mINSERT INTO `schedules` (`created_at`, `updated_at`, `language`, `posting_date`, `year_season`) VALUES('2009-06-04 00:31:11', '2009-06-04 00:31:11', 'french', '2009-06-04', 'Summer 2009')[0m
+  [4;35;1mrts_schedules Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO `rts_schedules` (`schedule_id`, `rt_id`) VALUES (2, 3)[0m
+  [4;35;1mSQL (61.2ms)[0m   [0mCOMMIT[0m
+Redirected to #<Schedule:0xb73a4a8c>
+Completed in 140ms (DB: 70) | 302 Found [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#show (for 134.154.221.43 at 2009-06-03 17:31:17) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 2) [0m
+Rendering template within layouts/schedules
+Rendering schedules/show
+Completed in 49ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/2]
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 17:31:28) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+
+
+ActionView::TemplateError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.rts) on line #1 of app/views/sws_static/_get_swsched.html.erb:
+1:   <% @schedule.rts.each do |rt| %>
+2:           <p>
+3:              <table cellpadding='2' cellspacing='1' border='1'><%= rt.name %>
+4: 		<tr>
+
+    app/views/sws_static/_get_swsched.html.erb:1
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:20:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:26:in `benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:19:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable_partial.rb:45:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/partials.rb:152:in `render_partial'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:258:in `render'
+    app/views/sws_static/index.html.erb:2
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/renderable.rb:39:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/template.rb:73:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_view/base.rb:256:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1174:in `render_for_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:896:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:868:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.2.2/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:51:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1248:in `default_render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:1254:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:617:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:610:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/rescue.rb:136:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:13:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.2.2/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/caching/sql_cache.rb:12:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:524:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/session_management.rb:134:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/base.rb:392:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:183:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (117.1ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (3.1ms)
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 17:41:37) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 13, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 17:46:08) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 13, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 17:47:40) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#new (for 134.154.221.43 at 2009-06-03 18:09:13) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+Rendering template within layouts/schedules
+Rendering schedules/new
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` ORDER BY created_at[0m
+  [4;36;1mRt Load (1.0ms)[0m   [0;1mSELECT `rts`.id FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = NULL ) [0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+Completed in 169ms (View: 140, DB: 6) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/new]
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 18:09:19) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 134.154.221.43 at 2009-06-03 20:27:44) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 13, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#new (for 134.154.221.43 at 2009-06-03 20:28:03) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+Rendering template within layouts/schedules
+Rendering schedules/new
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` ORDER BY created_at[0m
+  [4;36;1mRt Load (0.3ms)[0m   [0;1mSELECT `rts`.id FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = NULL ) [0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+Completed in 167ms (View: 138, DB: 6) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/new]
+
+
+Processing SwsStaticController#index (for 68.121.150.22 at 2009-06-04 00:47:51) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 35ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#index (for 68.121.150.22 at 2009-06-04 00:52:41) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.9ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 58ms (View: 32, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SwsStaticController#index (for 68.123.180.110 at 2009-06-05 15:53:01) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 13, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 68.123.180.110 at 2009-06-05 15:53:12) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#index (for 68.123.180.110 at 2009-06-05 15:53:33) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.4ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 57ms (View: 32, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SwsStaticController#index (for 68.123.180.110 at 2009-06-05 15:54:04) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (1.0ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (1.2ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (1.2ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (79.3ms)
+Completed in 112ms (View: 92, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 68.123.180.110 at 2009-06-05 16:04:58) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 68.123.180.110 at 2009-06-05 17:20:42) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.3ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.3ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (77.0ms)
+Completed in 111ms (View: 89, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 134.154.221.106 at 2009-06-25 13:27:13) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.3ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.3ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (77.4ms)
+Completed in 110ms (View: 90, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 76.20.47.114 at 2009-06-25 13:28:14) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.3ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.3ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (196.2ms)
+Completed in 229ms (View: 208, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SchedulesController#new (for 134.154.221.106 at 2009-06-25 13:33:31) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+Rendering template within layouts/schedules
+Rendering schedules/new
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` ORDER BY created_at[0m
+  [4;36;1mRt Load (0.3ms)[0m   [0;1mSELECT `rts`.id FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = NULL ) [0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+Completed in 167ms (View: 139, DB: 5) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/new]
+
+
+Processing SchedulesController#new (for 71.116.79.38 at 2009-06-26 10:49:23) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+Rendering template within layouts/schedules
+Rendering schedules/new
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` ORDER BY created_at[0m
+  [4;36;1mRt Load (0.3ms)[0m   [0;1mSELECT `rts`.id FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = NULL ) [0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+Completed in 172ms (View: 143, DB: 6) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/new]
+
+
+Processing SchedulesController#create (for 71.116.79.38 at 2009-06-26 10:49:42) [POST]
+  Parameters: {"commit"=>"Create", "schedule"=>{"posting_date(1i)"=>"2009", "posting_date(2i)"=>"6", "posting_date(3i)"=>"26", "language"=>"", "year_season"=>""}, "authenticity_token"=>"99a6e817bc652900c5c545877e10e9ab6b96944d"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mSchedule Create (0.8ms)[0m   [0;1mINSERT INTO `schedules` (`created_at`, `updated_at`, `language`, `posting_date`, `year_season`) VALUES('2009-06-26 17:49:42', '2009-06-26 17:49:42', '', '2009-06-26', '')[0m
+  [4;35;1mSQL (47.7ms)[0m   [0mCOMMIT[0m
+Redirected to #<Schedule:0xb73dd148>
+Completed in 93ms (DB: 52) | 302 Found [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#show (for 71.116.79.38 at 2009-06-26 10:49:48) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.9ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 3) [0m
+Rendering template within layouts/schedules
+Rendering schedules/show
+Completed in 52ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/3]
+
+
+Processing SchedulesController#edit (for 71.116.79.38 at 2009-06-26 10:50:01) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.3ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 3) [0m
+Rendering template within layouts/schedules
+Rendering schedules/edit
+Completed in 70ms (View: 44, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/3/edit]
+
+
+Processing SwsStaticController#index (for 134.154.221.162 at 2009-07-06 15:06:01) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.3ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.3ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (76.1ms)
+Completed in 109ms (View: 88, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 75.36.249.181 at 2009-07-17 15:28:49) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.3ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.3ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (176.8ms)
+Completed in 210ms (View: 189, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 75.36.249.181 at 2009-07-17 15:28:52) [GET]
+  Parameters: {"user_lang"=>"foo"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='foo' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 35ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/foo]
+
+
+Processing SwsStaticController#index (for 75.36.249.181 at 2009-07-17 15:29:52) [GET]
+  Parameters: {"user_lang"=>"english"}
+
+
+Processing SchedulesController#new (for 75.36.249.181 at 2009-07-17 15:29:52) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+Rendering template within layouts/schedules
+Rendering schedules/new
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.4ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.2ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.2ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` ORDER BY created_at[0m
+  [4;36;1mRt Load (0.2ms)[0m   [0;1mSELECT `rts`.id FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = NULL ) [0m
+  [4;35;1mRt Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `rts`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.2ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (279.6ms)
+Completed in 314ms (View: 292, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+Completed in 530ms (View: 502, DB: 5) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/new]
+
+
+Processing SwsStaticController#index (for 75.36.249.181 at 2009-07-17 15:29:53) [GET]
+  Parameters: {"user_lang"=>"foo"}
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='foo' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 14, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/foo]
+
+
+Processing SchedulesController#index (for 75.36.249.181 at 2009-07-17 16:23:31) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.9ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 61ms (View: 35, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:48:58) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (1.0ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+Rendered sws_static/_get_swsched (28.0ms)
+Completed in 61ms (View: 40, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#index (for 209.129.168.31 at 2009-11-04 11:50:01) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.4ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 60ms (View: 36, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#edit (for 209.129.168.31 at 2009-11-04 11:50:17) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+Rendering template within layouts/schedules
+Rendering schedules/edit
+Completed in 69ms (View: 43, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/1/edit]
+
+
+Processing SchedulesController#update (for 209.129.168.31 at 2009-11-04 11:51:04) [PUT]
+  Parameters: {"commit"=>"Update", "schedule"=>{"posting_date(1i)"=>"2009", "posting_date(2i)"=>"11", "posting_date(3i)"=>"4", "language"=>"english", "year_season"=>"Summer 2009"}, "authenticity_token"=>"9161fbcbc3de7dcf9010271df189cdc755a0743f", "id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.3ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSchedule Update (0.9ms)[0m   [0mUPDATE `schedules` SET `updated_at` = '2009-11-04 19:51:04', `posting_date` = '2009-11-04' WHERE `id` = 1[0m
+  [4;36;1mSQL (44.4ms)[0m   [0;1mCOMMIT[0m
+Redirected to #<Schedule:0xb73e02d0>
+Completed in 90ms (DB: 49) | 302 Found [http://fsiinfo.familyradio.org/sws/schedules/1]
+
+
+Processing SchedulesController#show (for 209.129.168.31 at 2009-11-04 11:51:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+Rendering template within layouts/schedules
+Rendering schedules/show
+Completed in 49ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/1]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:51:20) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+Rendered sws_static/_get_swsched (27.2ms)
+Completed in 60ms (View: 39, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:51:29) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+Rendered sws_static/_get_swsched (27.4ms)
+Completed in 62ms (View: 41, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:51:39) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+Rendered sws_static/_get_swsched (127.5ms)
+Completed in 160ms (View: 140, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:51:43) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+Rendered sws_static/_get_swsched (27.1ms)
+Completed in 60ms (View: 39, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#index (for 209.129.168.31 at 2009-11-04 11:52:00) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.9ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 60ms (View: 35, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#edit (for 209.129.168.31 at 2009-11-04 11:52:14) [GET]
+  Parameters: {"id"=>"2"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.9ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 2) [0m
+Rendering template within layouts/schedules
+Rendering schedules/edit
+Completed in 69ms (View: 43, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/2/edit]
+
+
+Processing SchedulesController#edit (for 209.129.168.31 at 2009-11-04 11:52:30) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.3ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+Rendering template within layouts/schedules
+Rendering schedules/edit
+Completed in 68ms (View: 43, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/1/edit]
+
+
+Processing SchedulesController#update (for 209.129.168.31 at 2009-11-04 11:52:39) [PUT]
+  Parameters: {"commit"=>"Update", "schedule"=>{"posting_date(1i)"=>"2009", "posting_date(2i)"=>"11", "posting_date(3i)"=>"3", "language"=>"english", "year_season"=>"Summer 2009"}, "authenticity_token"=>"9161fbcbc3de7dcf9010271df189cdc755a0743f", "id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.3ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSchedule Update (0.9ms)[0m   [0mUPDATE `schedules` SET `updated_at` = '2009-11-04 19:52:39', `posting_date` = '2009-11-03' WHERE `id` = 1[0m
+  [4;36;1mSQL (58.6ms)[0m   [0;1mCOMMIT[0m
+Redirected to #<Schedule:0xb74031e0>
+Completed in 104ms (DB: 63) | 302 Found [http://fsiinfo.familyradio.org/sws/schedules/1]
+
+
+Processing SchedulesController#show (for 209.129.168.31 at 2009-11-04 11:52:45) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+Rendering template within layouts/schedules
+Rendering schedules/show
+Completed in 50ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/1]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:53:03) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+Rendered sws_static/_get_swsched (27.1ms)
+Completed in 61ms (View: 41, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/]
+
+
+Processing SchedulesController#edit (for 209.129.168.31 at 2009-11-04 11:53:18) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 3) [0m
+Rendering template within layouts/schedules
+Rendering schedules/edit
+Completed in 69ms (View: 43, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/3/edit]
+
+
+Processing SchedulesController#destroy (for 209.129.168.31 at 2009-11-04 11:53:32) [DELETE]
+  Parameters: {"authenticity_token"=>"9161fbcbc3de7dcf9010271df189cdc755a0743f", "id"=>"3"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.3ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 3) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mJoin Table Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;36;1mRt Load (0.3ms)[0m   [0;1mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 3 ) [0m
+  [4;35;1mSchedule Destroy (0.7ms)[0m   [0mDELETE FROM `schedules` WHERE `id` = 3[0m
+  [4;36;1mSQL (46.6ms)[0m   [0;1mCOMMIT[0m
+Redirected to http://fsiinfo.familyradio.org/sws/schedules
+Completed in 99ms (DB: 53) | 302 Found [http://fsiinfo.familyradio.org/sws/schedules/3]
+
+
+Processing SchedulesController#index (for 209.129.168.31 at 2009-11-04 11:53:37) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.9ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 57ms (View: 31, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing ApplicationController#index (for 209.129.168.31 at 2009-11-04 11:54:04) [GET]
+
+
+ActionController::RoutingError (No route matches "/english" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing ApplicationController#index (for 209.129.168.31 at 2009-11-04 11:54:20) [GET]
+
+
+ActionController::RoutingError (No route matches "/french" with {:method=>:get}):
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/recognition_optimisation.rb:66:in `recognize_path'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/routing/route_set.rb:386:in `recognize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:182:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:110:in `dispatch_unlocked'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:123:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:122:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:132:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/dispatcher.rb:39:in `dispatch'
+    /var/www/sws/dispatch.cgi:10
+
+Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:54:43) [GET]
+  Parameters: {"user_lang"=>"english"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.3ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='english' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (0.3ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 1 ) [0m
+  [4;36;1mRt Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (0.3ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 1 ) [0m
+  [4;35;1mFd Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+  [4;36;1mJoin Table Columns (1.7ms)[0m   [0;1mSHOW FIELDS FROM `fds_rts`[0m
+  [4;35;1mFd Load (0.3ms)[0m   [0mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 2 ) [0m
+Rendered sws_static/_get_swsched (74.7ms)
+Completed in 107ms (View: 87, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/english]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:55:03) [GET]
+  Parameters: {"user_lang"=>"french"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (2.0ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='french' group by posting_date;[0m
+Rendering sws_static/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+  [4;36;1mJoin Table Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `rts_schedules`[0m
+  [4;35;1mRt Load (1.0ms)[0m   [0mSELECT * FROM `rts` INNER JOIN `rts_schedules` ON `rts`.id = `rts_schedules`.rt_id WHERE (`rts_schedules`.schedule_id = 2 ) [0m
+  [4;36;1mRt Columns (2.1ms)[0m   [0;1mSHOW FIELDS FROM `rts`[0m
+  [4;35;1mJoin Table Columns (1.7ms)[0m   [0mSHOW FIELDS FROM `fds_rts`[0m
+  [4;36;1mFd Load (1.2ms)[0m   [0;1mSELECT * FROM `fds` INNER JOIN `fds_rts` ON `fds`.id = `fds_rts`.fd_id WHERE (`fds_rts`.rt_id = 3 ) [0m
+  [4;35;1mFd Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `fds`[0m
+Rendered sws_static/_get_swsched (67.5ms)
+Completed in 101ms (View: 80, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/french]
+
+
+Processing SwsStaticController#index (for 209.129.168.31 at 2009-11-04 11:57:04) [GET]
+  Parameters: {"user_lang"=>"new"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (1.2ms)[0m   [0;1mselect *, min(datediff(curdate(), posting_date)) from schedules where curdate() > posting_date and language='new' group by posting_date;[0m
+Rendering sws_static/index
+Rendered sws_static/_get_swsched (1.3ms)
+Completed in 34ms (View: 13, DB: 2) | 200 OK [http://fsiinfo.familyradio.org/sws/schedule/new]
+
+
+Processing SchedulesController#index (for 209.129.168.31 at 2009-11-04 11:57:16) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.4ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 56ms (View: 32, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#index (for 65.48.23.210 at 2010-01-14 16:42:47) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.4ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 57ms (View: 32, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]
+
+
+Processing SchedulesController#show (for 65.48.23.210 at 2010-01-14 16:43:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `schedules`[0m
+  [4;35;1mSchedule Load (0.8ms)[0m   [0mSELECT * FROM `schedules` WHERE (`schedules`.`id` = 1) [0m
+Rendering template within layouts/schedules
+Rendering schedules/show
+Completed in 51ms (View: 22, DB: 4) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules/1]
+
+
+Processing SchedulesController#index (for 216.82.241.35 at 2010-02-04 16:50:19) [GET]
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSchedule Load (0.4ms)[0m   [0;1mSELECT * FROM `schedules` [0m
+Rendering template within layouts/schedules
+Rendering schedules/index
+  [4;35;1mSchedule Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `schedules`[0m
+Completed in 57ms (View: 32, DB: 3) | 200 OK [http://fsiinfo.familyradio.org/sws/schedules]

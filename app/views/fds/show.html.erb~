@@ -1,0 +1,18 @@
+<p>
+  <b>Utc begin:</b>
+  <%=h @fd.utc_begin %>
+</p>
+
+<p>
+  <b>Utc end:</b>
+  <%=h @fd.utc_end %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @fd.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_fd_path(@fd) %> |
+<%= link_to 'Back', fds_path %>

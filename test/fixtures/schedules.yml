@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  year_season: MyString
+  language: MyString
+  posting_date: 2009-06-03
+
+two:
+  year_season: MyString
+  language: MyString
+  posting_date: 2009-06-03

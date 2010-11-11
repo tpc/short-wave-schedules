@@ -1,0 +1,24 @@
+<h1>Editing rt</h1>
+
+<% form_for(@rt) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :utc_offset_column_name %><br />
+    <%= f.text_field :utc_offset_column_name %>
+  </p>
+  <p>
+    <%= f.label :utc_offset %><br />
+    <%= f.text_field :utc_offset %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @rt %> |
+<%= link_to 'Back', rts_path %>

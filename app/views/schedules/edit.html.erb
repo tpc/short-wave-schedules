@@ -1,0 +1,24 @@
+<h1>Editing schedule</h1>
+
+<% form_for(@schedule) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :year_season %><br />
+    <%= f.text_field :year_season %>
+  </p>
+  <p>
+    <%= f.label :language %><br />
+    <%= f.text_field :language %>
+  </p>
+  <p>
+    <%= f.label :posting_date %><br />
+    <%= f.date_select :posting_date %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @schedule %> |
+<%= link_to 'Back', schedules_path %>

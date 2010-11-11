@@ -1,0 +1,18 @@
+<p>
+  <b>Name:</b>
+  <%=h @rt.name %>
+</p>
+
+<p>
+  <b>Utc offset column name:</b>
+  <%=h @rt.utc_offset_column_name %>
+</p>
+
+<p>
+  <b>Utc offset:</b>
+  <%=h @rt.utc_offset %>
+</p>
+
+
+<%= link_to 'Edit', edit_rt_path(@rt) %> |
+<%= link_to 'Back', rts_path %>

@@ -1,0 +1,29 @@
+<p>This app is meant to be an approximation of<br />
+http://www.familyradio.com/international/frame/
+</p>
+  <% if @schedule %>
+    <% @schedule.rts.each do |rt| %>
+          <p>
+             <table cellpadding='2' cellspacing='1' border='1'><%= rt.name %>
+		<tr>
+                  <th>UTC</th> 
+	<% if rt.utc_offset_column_name.strip() != "" %> 
+		  <th><%= rt.utc_offset_column_name %></th>
+	<% end %>
+		  <th>khz & meter band</th>
+		</tr>
+	<% rt.fds.each do |fd| %>
+	        <tr>
+	           <td><%= fd.utc_begin.to_s(:hrmin24) %> to <%= fd.utc_end.to_s(:hrmin24) %></td> 
+	    <% if rt.utc_offset_column_name.strip() != "" %> 
+		   <td><%= (fd.utc_begin + Integer(rt.utc_offset).hours).to_s(:localize)  %> to <%=  (fd.utc_end + Integer(rt.utc_offset).hours).to_s(:localize) %></td>
+            <% end %>
+		   <td><pre><%= fd.body %></pre></td>
+		</tr>
+	<% end %>
+             </table>
+          </p>
+    <% end %>
+  <% else %>
+There are no schedules to post at this time
+  <% end %>

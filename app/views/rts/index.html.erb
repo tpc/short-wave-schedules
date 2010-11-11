@@ -1,0 +1,24 @@
+<h1>Listing rts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Utc offset column name</th>
+    <th>Utc offset</th>
+  </tr>
+
+<% for rt in @rts %>
+  <tr>
+    <td><%=h rt.name %></td>
+    <td><%=h rt.utc_offset_column_name %></td>
+    <td><%=h rt.utc_offset %></td>
+    <td><%= link_to 'Show', rt %></td>
+    <td><%= link_to 'Edit', edit_rt_path(rt) %></td>
+    <td><%= link_to 'Destroy', rt, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New rt', new_rt_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  utc_begin: 2009-06-03 14:17:54
+  utc_end: 2009-06-03 14:17:54
+  body: MyText
+
+two:
+  utc_begin: 2009-06-03 14:17:54
+  utc_end: 2009-06-03 14:17:54
+  body: MyText

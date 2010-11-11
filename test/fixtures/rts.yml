@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  utc_offset_column_name: MyString
+  utc_offset: MyString
+
+two:
+  name: MyString
+  utc_offset_column_name: MyString
+  utc_offset: MyString
